@@ -12,6 +12,7 @@ import { NewOrderModalComponent } from "../new-order-modal/new-order-modal.compo
 
 export class OrderDetailsComponent implements OnInit {
     baseUrl = 'assets/json/'
+    originalOrder: any
     order: any
     products: any = [];
     customers: any
@@ -25,6 +26,7 @@ export class OrderDetailsComponent implements OnInit {
 
     ngOnInit() {
         const orderDetails = this.route.snapshot.paramMap.get('orderDetails')
+        this.originalOrder = orderDetails ? JSON.parse(orderDetails) : null
         this.order = orderDetails ? JSON.parse(orderDetails) : null
         this.orderService.getProducts().subscribe((data: any) => {
             this.products = data
@@ -75,6 +77,10 @@ export class OrderDetailsComponent implements OnInit {
         } else {
             this.order.items.splice(this.order.items.findIndex((pro: any) => pro.id === productId), 1);
         }
+    }
+
+    showPlaceOrderButton() {
+        return JSON.stringify(this.originalOrder.items) !== JSON.stringify(this.order.items)
     }
 
     placeOrder() {

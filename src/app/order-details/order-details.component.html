@@ -10,5 +10,5 @@
     </div>
 </div>
 <button (click)="openDialog()">Add new products</button>
-<button (click)="placeOrder()">Place Order</button>
+<button *ngIf="showPlaceOrderButton()" (click)="placeOrder()">Place Order</button>
 <button (click)="cancelCart()">Cancel</button>

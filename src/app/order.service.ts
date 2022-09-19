@@ -15,4 +15,8 @@ export class OrderService {
     getCustomers() {
         return this.httpClient.get(this.baseUrl + 'customers.json')
     }
+
+    getOrders() {
+        return this.httpClient.get(this.baseUrl + 'orders.json')
+    }
 }

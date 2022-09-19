@@ -10,7 +10,6 @@ import { OrderService } from '../order.service';
 })
 export class OrderComponent implements OnInit {
   title = 'ordering-project';
-  baseUrl = 'assets/json/'
   orders: any = []
   customers: any = []
 
@@ -22,7 +21,7 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.orderService.getCustomers().subscribe(cusData => {
       this.customers = cusData
-        this.httpClient.get(this.baseUrl + 'orders.json').subscribe(data => {
+        this.orderService.getOrders().subscribe(data => {
           this.orders = JSON.parse(JSON.stringify(data).replace(/-./g, x=>x[1].toUpperCase()))
         })
     })
