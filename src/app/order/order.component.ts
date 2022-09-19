@@ -28,7 +28,8 @@ export class OrderComponent implements OnInit {
   }
 
   goToOrderDetail(order: any) {
-    this.router.navigate(['/orders', order.id, { orderDetails: JSON.stringify(order) } ]);
+    // this.orderService.orderDetails(order)
+    this.router.navigate(['/orders', order.id ]);
   }
 
   getCustomerName(custId: string) {

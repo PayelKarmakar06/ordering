@@ -25,15 +25,19 @@ export class OrderDetailsComponent implements OnInit {
         public dialog: MatDialog) {}
 
     ngOnInit() {
-        const orderDetails = this.route.snapshot.paramMap.get('orderDetails')
-        this.originalOrder = orderDetails ? JSON.parse(orderDetails) : null
-        this.order = orderDetails ? JSON.parse(orderDetails) : null
-        this.orderService.getProducts().subscribe((data: any) => {
-            this.products = data
+        const orderId = this.route.snapshot.paramMap.get('orderId')
+        this.orderService.getOrders().subscribe((orderdata: any) => {
+            const tempOrder = JSON.parse(JSON.stringify(orderdata).replace(/-./g, x=>x[1].toUpperCase()))
+            this.originalOrder = tempOrder.find((order: any) => order.id === orderId)
+            this.order = JSON.parse(JSON.stringify(this.originalOrder))
+            this.orderService.getProducts().subscribe((data: any) => {
+                this.products = data
+            })
+            this.orderService.getCustomers().subscribe(data => {
+                this.customers = data
+            })
         })
-        this.orderService.getCustomers().subscribe(data => {
-            this.customers = data
-        })
+        
     }
 
     getProductDescription(productId: string) {
@@ -80,7 +84,7 @@ export class OrderDetailsComponent implements OnInit {
     }
 
     showPlaceOrderButton() {
-        return JSON.stringify(this.originalOrder.items) !== JSON.stringify(this.order.items)
+        return this.order.items.length && JSON.stringify(this.originalOrder.items) !== JSON.stringify(this.order.items)
     }
 
     placeOrder() {

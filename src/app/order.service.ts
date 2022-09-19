@@ -5,6 +5,7 @@ import { Inject, Injectable } from "@angular/core";
     providedIn: 'root',
 })
 export class OrderService {
+    private _orderDetails = null
     baseUrl = 'assets/json/'
     constructor(private httpClient: HttpClient) {}
     
@@ -18,5 +19,11 @@ export class OrderService {
 
     getOrders() {
         return this.httpClient.get(this.baseUrl + 'orders.json')
+    }
+    set orderDetails(orderDetails: any) {
+        this._orderDetails = orderDetails
+    }
+    getOrderDetails() {
+        return this._orderDetails
     }
 }
