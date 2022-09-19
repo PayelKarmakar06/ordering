@@ -23,7 +23,7 @@ export class OrderService {
     set orderDetails(orderDetails: any) {
         this._orderDetails = orderDetails
     }
-    getOrderDetails() {
+    get orderDetails() {
         return this._orderDetails
     }
 }

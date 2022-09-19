@@ -19,25 +19,19 @@ export class OrderDetailsComponent implements OnInit {
     newProductObj: any
 
     constructor(
-        private route: ActivatedRoute,
         private router: Router,
         private orderService: OrderService,
         public dialog: MatDialog) {}
 
     ngOnInit() {
-        const orderId = this.route.snapshot.paramMap.get('orderId')
-        this.orderService.getOrders().subscribe((orderdata: any) => {
-            const tempOrder = JSON.parse(JSON.stringify(orderdata).replace(/-./g, x=>x[1].toUpperCase()))
-            this.originalOrder = tempOrder.find((order: any) => order.id === orderId)
-            this.order = JSON.parse(JSON.stringify(this.originalOrder))
-            this.orderService.getProducts().subscribe((data: any) => {
-                this.products = data
-            })
-            this.orderService.getCustomers().subscribe(data => {
-                this.customers = data
-            })
+        this.originalOrder = this.orderService.orderDetails
+        this.order = JSON.parse(JSON.stringify(this.originalOrder))
+        this.orderService.getProducts().subscribe((data: any) => {
+            this.products = data
         })
-        
+        this.orderService.getCustomers().subscribe(data => {
+            this.customers = data
+        })
     }
 
     getProductDescription(productId: string) {
