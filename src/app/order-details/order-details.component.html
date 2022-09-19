@@ -1,0 +1,14 @@
+<div> Order ID #{{ order.id}} </div>
+<div> Customer ID - {{ order.customerId }}</div> 
+<div>Customer Name - {{ getCustomerName(order.customerId) }}</div>
+
+<div class="product-details">Product Details - 
+    <div *ngFor="let item of order.items" class="product">
+      {{ getProductDescription(item.productId) }} ({{ item.productId }}) * {{ item.quantity }} ({{ item.unitPrice | currency: 'EUR' }}) = {{ item.total | currency: 'EUR' }}
+      <button (click)="deleteProduct(item.productId)">-</button>
+      <button (click)="addProduct(item.productId)">+</button>
+    </div>
+</div>
+<button (click)="openDialog()">Add new products</button>
+<button (click)="placeOrder()">Place Order</button>
+<button (click)="cancelCart()">Cancel</button>
