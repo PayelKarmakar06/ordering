@@ -22,7 +22,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
         let productList = this.productData.products.map((elem: any, index: number) => {
             return {
                 productId: elem.id,
-                quantity: form.value['productQuantity'+index],
+                quantity: form.value['productQuantity'+index] ? form.value['productQuantity'+index].toFixed(2) : null,
                 unitPrice: elem.price,
                 total: (Number(elem.price) * Number(form.value['productQuantity'+index])).toFixed(2)
             }
