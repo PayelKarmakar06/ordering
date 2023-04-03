@@ -3,7 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 This is a working model of cart services for a basic e-commerce portal. The landing page shows the list of orders, we can see the order detail for a specific order by clicking on the order tile. 
 In Order details page, it is also possible to add / remove the existing products, add (brand) new products and to place the order (dummy - only consoling the cart for now).
-The idea is to give more emphasize on the functionality than the UX. We tried out a few material modules. Form optimization to be done.
+The idea is to give more emphasize on the functionality than the UX. Strong use of type casting was intended, we created some interfaces as helpers to type casting and a service file to help data mapping.
+We tried out a few material modules. Form optimization to be done.
 
 ## Development server
 
