@@ -1,4 +1,4 @@
-# OrderingProject
+# Cart Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 This is a working model of cart services for a basic e-commerce portal. The landing page shows the list of orders, we can see the order detail for a specific order by clicking on the order tile. 
