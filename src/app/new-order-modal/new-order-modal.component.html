@@ -1,0 +1,14 @@
+<form #productSelectionForm="ngForm" (ngSubmit)="setValue(productSelectionForm)">
+  <div *ngFor="let item of productData.products; let i = index" [attr.data-index]="i" class="product">
+    <!-- <mat-form-field appearance="fill"> -->
+      <!-- <ng-content></ng-content> -->
+      <br>
+      <span >{{ item.description }} : </span> &nbsp;
+      <!-- <mat-label value="item.description">{{ item.description }}</mat-label> -->
+      <input type="number" [name]="'productQuantity' + i" [id]="'productQuantity' + i" [ngModel] = "productQuantity">
+    <!-- </mat-form-field> -->
+  </div>
+  <br>
+  <button mat-raised-button color="primary">Submit</button> &nbsp;
+  <button mat-raised-button color="primary" (click)="cancelDialog()">Cancel</button>
+</form>

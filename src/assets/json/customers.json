@@ -1,0 +1,38 @@
+[
+    {
+      "id": "2",
+      "name": "Coca Cola",
+      "since": "2014-06-28",
+      "revenue": "4692.12"
+    },
+    {
+      "id": "1",
+      "name": "Jerry",
+      "since": "2015-01-15",
+      "revenue": "15085.95"
+    },
+    {
+      "id": "3",
+      "name": "Jeroen De Wit",
+      "since": "2016-02-11",
+      "revenue": "0.00"
+    },
+    {
+      "id": "4",
+      "name": "Rishi",
+      "since": "2014-06-28",
+      "revenue": "85.12"
+    },
+    {
+      "id": "5",
+      "name": "Sammy",
+      "since": "2015-01-15",
+      "revenue": "1505.95"
+    },
+    {
+      "id": "6",
+      "name": "Angelina",
+      "since": "2016-02-11",
+      "revenue": "545.00"
+    }
+]

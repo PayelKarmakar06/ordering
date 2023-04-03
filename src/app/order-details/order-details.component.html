@@ -1,0 +1,24 @@
+<div style="margin: 40px" *ngIf="order">
+  <h2>Order Details</h2>
+  <div> Order ID #{{ order.id }} </div>
+  <div> Customer ID - {{ order.customerId }}</div> 
+  <div>Customer Name - {{ getCustomerName(order.customerId) }}</div>
+
+  <div class="product-details" *ngIf="order && order.items.length">Product Details - 
+      <div *ngFor="let item of order.items" class="product">
+        <br>
+        {{ getProductDescription(item.productId) }} ({{ item.productId }}) * {{ item.quantity }} ({{ item.unitPrice | currency: 'EUR' }}) = {{ item.total | currency: 'EUR' }}
+        <button mat-icon-button color="primary" (click)="deleteProduct(item.productId)">
+          <mat-icon>remove_shopping_cart</mat-icon>
+        </button> &nbsp;
+        <button mat-icon-button color="primary" (click)="addProduct(item.productId)">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
+  </div>
+  <br>
+
+  <button mat-raised-button color="primary" *ngIf="showAddProductButton()" (click)="openDialog()">Add new products</button> &nbsp;
+  <button mat-raised-button color="primary" *ngIf="showPlaceOrderButton()" (click)="placeOrder()">Place Order</button> &nbsp;
+  <button mat-raised-button color="primary" (click)="cancelCart()">Cancel</button>
+</div>
