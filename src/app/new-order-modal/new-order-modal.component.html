@@ -1,6 +1,0 @@
-<form #productSelectionForm="ngForm" (ngSubmit)="setValue(productSelectionForm)">
-<div *ngFor="let item of productData.products; let i = index" [attr.data-index]="i" class="product">
-    <span >{{ item.description }} </span> <input type="number" [name]="'productQuantity' + i" id="productQuantity" [ngModel] = "productQuantity">
-  </div>
-  <button>Submit</button>
-</form>
